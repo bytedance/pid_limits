@@ -1,0 +1,8 @@
+*.swo
+*.swp
+*~
+.idea/
+.DS_Store
+output
+*.out
+tags*
