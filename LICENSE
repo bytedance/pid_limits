@@ -199,3 +199,98 @@
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
+
+=======================================================================
+Apache SkyWalking Subcomponents:
+
+The Apache SkyWalking project contains subcomponents with separate copyright
+notices and license terms. Your use of the source code for the these
+subcomponents is subject to the terms and conditions of the following
+licenses.
+
+========================================================================
+Apache 2.0 licenses
+========================================================================
+
+The following components are provided under the Apache License. See project link for details.
+The text of each license is the standard Apache 2.0 license.
+
+   proto files from bytedance/sonic: https://github.com/bytedance/sonic Apache 2.0
+   proto files from chenzhuoyu/base64x: https://github.com/chenzhuoyu/base64x Apache 2.0
+   proto files from golang/mock: https://github.com/golang/mock Apache 2.0
+   proto files from modern-go/concurrent: https://github.com/modern-go/concurrent Apache 2.0
+   proto files from modern-go/reflect2: https://github.com/modern-go/reflect2 Apache 2.0
+   proto files from go-yaml/yaml: https://github.com/go-yaml/yaml/tree/v2 Apache 2.0
+
+
+
+========================================================================
+MIT licenses
+========================================================================
+
+The following components are provided under the MIT License. See project link for details.
+The text of each license is the standard MIT license.
+
+   proto files from agiledragon/gomonkey: https://github.com/agiledragon/gomonkey MIT
+   proto files from bluesuncorp/go-validate-yourself: https://github.com/bluesuncorp/go-validate-yourself MIT
+   proto files from gin-contrib/sse: https://github.com/gin-contrib/sse MIT
+   proto files from gin-gonic/gin: https://github.com/gin-gonic/gin MIT
+   proto files from stretchr/testify: https://github.com/stretchr/testify MIT
+   proto files from go-ole/go-ole: https:/github.com/go-ole/go-ole MIT
+   proto files from go-playground/universal-translator: https://github.com/go-playground/universal-translator MIT
+   proto files from go-playground/assert: https://github.com/go-playground/assert MIT
+   proto files from go-playground/locales: https://github.com/go-playground/locales MIT
+   proto files from pelletier/go-toml: https://github.com/pelletier/go-toml MIT
+   proto files from goccy/go-json: https://github.com/goccy/go-json MIT
+   proto files from kr/text: https://github.com/kr/text MIT
+   proto files from jsoniter-go: http://jsoniter.com/ MIT
+   proto files from klauspost/cpuid: https://github.com/klauspost/cpuid MIT
+   proto files from kr/pretty: https://github.com/kr/pretty MIT
+   proto files from leodido/go-urn: https://github.com/leodido/go-urn MIT
+   proto files from mattn/go-isatty: http://godoc.org/github.com/mattn/go-isatty MIT
+   proto files from StackExchange-wmi: http://godoc.org/github.com/StackExchange/wmi MIT
+   proto files from ugorji/go: https://github.com/ugorji/go MIT
+   proto files from go-yaml/yaml: https://github.com/go-yaml/yaml/tree/v2 MIT
+
+
+
+========================================================================
+BSD 3 Clause licenses
+========================================================================
+
+The following components are provided under the BSD License. See project link for details.
+The text of each license is the standard BSD 3 Clause license.
+
+   proto files from twitchyliquid64/golang-asm: https://github.com/twitchyliquid64/golang-asm BSD-3-Clause
+   proto files from go.googlesource.com/arch: https://go.googlesource.com/arch BSD-3-Clause
+   proto files from golang.org/x/crypto: https://godoc.org/golang.org/x/crypto BSD-3-Clause
+   proto files from golang.org/x/net: https://godoc.org/golang.org/x/net BSD-3-Clause
+   proto files from golang.org/x/sys: https://pkg.go.dev/golang.org/x/sync BSD-3-Clause
+   proto files from golang.org/x/xerrors: https://go.googlesource.com/xerrors BSD-3-Clause
+   proto files from golang/text: https://github.com/golang/text BSD-3-Clause
+   proto files from google.golang.org/protobuf: https://go.googlesource.com/protobuf BSD-3-Clause
+   proto files from google/go-cmp: https://github.com/google/go-cmp BSD-3-Clause
+   proto files from shirou/gopsutil: https://github.com/shirou/gopsutil BSD-3-Clause
+   proto files from pmezard-go-difflib: https://github.com/pmezard/go-difflib BSD-3-Clause
+   proto files from rogpeppe/go-internal: http://github.com/rogpeppe/go-internal/ BSD-3-Clause
+
+
+========================================================================
+BSD 2 Clause license
+========================================================================
+
+The following components are provided under the BSD License. See project link for details.
+The text of each license is the standard BSD 2 Clause license.
+
+   proto files from gocheck: http://labix.org/gocheck BSD-2-Clause
+   proto files from pkg/errors: https://github.com/pkg/errors BSD-2-Clause
+
+
+========================================================================
+ISC license
+========================================================================
+
+The following components are provided under the ISC License. See project link for details.
+The text of each license is the standard ISC license.
+
+   proto files from davecgh/go-spew: https://github.com/davecgh/go-spew ISC
