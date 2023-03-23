@@ -204,7 +204,7 @@
 Apache 2.0 licenses
 ========================================================================
 
-The following components are provided under the Apache License. See project link for details.
+The following dependencies are provided under the Apache License. See project link for details.
 The text of each license is the standard Apache 2.0 license.
 
    proto files from bytedance/sonic: https://github.com/bytedance/sonic Apache 2.0
@@ -220,7 +220,7 @@ The text of each license is the standard Apache 2.0 license.
 MIT licenses
 ========================================================================
 
-The following components are provided under the MIT License. See project link for details.
+The following dependencies are provided under the MIT License. See project link for details.
 The text of each license is the standard MIT license.
 
    proto files from agiledragon/gomonkey: https://github.com/agiledragon/gomonkey MIT
@@ -250,7 +250,7 @@ The text of each license is the standard MIT license.
 BSD 3 Clause licenses
 ========================================================================
 
-The following components are provided under the BSD License. See project link for details.
+The following dependencies are provided under the BSD License. See project link for details.
 The text of each license is the standard BSD 3 Clause license.
 
    proto files from twitchyliquid64/golang-asm: https://github.com/twitchyliquid64/golang-asm BSD-3-Clause
@@ -271,7 +271,7 @@ The text of each license is the standard BSD 3 Clause license.
 BSD 2 Clause license
 ========================================================================
 
-The following components are provided under the BSD License. See project link for details.
+The following dependencies are provided under the BSD License. See project link for details.
 The text of each license is the standard BSD 2 Clause license.
 
    proto files from gocheck: http://labix.org/gocheck BSD-2-Clause
@@ -282,7 +282,7 @@ The text of each license is the standard BSD 2 Clause license.
 ISC license
 ========================================================================
 
-The following components are provided under the ISC License. See project link for details.
+The following dependencies are provided under the ISC License. See project link for details.
 The text of each license is the standard ISC license.
 
    proto files from davecgh/go-spew: https://github.com/davecgh/go-spew ISC
