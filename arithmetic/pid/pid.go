@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package  pid
+package pid
 
-import "github.com/bytedance/plato/util"
+import "github.com/bytedance/pid_limits/util"
 
 const (
 	OUTMAX = 0

@@ -13,13 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package  plato
+package plato
 
 import (
 	"sort"
 
-	"github.com/bytedance/plato/core/base"
-	"github.com/bytedance/plato/util"
+	"github.com/bytedance/pid_limits/core/base"
+	"github.com/bytedance/pid_limits/util"
 )
 
 var (

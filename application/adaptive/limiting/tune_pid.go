@@ -13,12 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package  limiting
+package limiting
 
 import (
-	"github.com/bytedance/plato/arithmetic/pid"
-	"github.com/bytedance/plato/metrics/system/cpu"
-	"github.com/bytedance/plato/util"
+	"github.com/bytedance/pid_limits/arithmetic/pid"
+	"github.com/bytedance/pid_limits/metrics/system/cpu"
+	"github.com/bytedance/pid_limits/util"
 	"sync/atomic"
 	"time"
 )
@@ -47,4 +47,3 @@ func (t *PIDTune) Limit() bool {
 func (t *PIDTune) LimitRatio() uint32 {
 	return -atomic.LoadUint32(&t.rate)
 }
-

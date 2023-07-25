@@ -13,15 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package  base
+package base
 
 import (
-	"github.com/bytedance/plato/util"
+	"github.com/bytedance/pid_limits/util"
 	"reflect"
 	"testing"
 	"time"
 
-	"github.com/bytedance/plato/core/base"
+	"github.com/bytedance/pid_limits/core/base"
 )
 
 func TestSlidingWindowMetric_getBucketStartRange(t *testing.T) {

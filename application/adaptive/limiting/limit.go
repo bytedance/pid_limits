@@ -13,14 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package  limiting
+package limiting
 
 import (
 	"math"
 
-	"github.com/bytedance/plato/application/adaptive/config"
-	"github.com/bytedance/plato/arithmetic/pid"
-	"github.com/bytedance/plato/metrics/system/cpu"
+	"github.com/bytedance/pid_limits/application/adaptive/config"
+	"github.com/bytedance/pid_limits/arithmetic/pid"
+	"github.com/bytedance/pid_limits/metrics/system/cpu"
 )
 
 // develop to orient interface, use limit() function to determine weather limit cpu rate
@@ -39,7 +39,6 @@ func NewPidLimitingHttpDefault(cpuThreshold float64, opts ...config.OptionFunc) 
 	}
 	return NewPidLimiting(5351.821461335851, 12.030101184005932, 0.03, cpuThreshold, opts...)
 }
-
 
 func NewPidLimiting(kp float64, ki float64, kd float64, setPoint float64, opts ...config.OptionFunc) *PIDLimiting {
 	option := config.NewOptions()

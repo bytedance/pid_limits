@@ -13,11 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package  zscore
+package zscore
 
 import (
 	"fmt"
-	"github.com/bytedance/plato/arithmetic/common"
+	"github.com/bytedance/pid_limits/arithmetic/common"
 	"reflect"
 	"strconv"
 	"strings"
@@ -64,4 +64,3 @@ func TestZScore2(t *testing.T) {
 	fmt.Println(z)
 	fmt.Println(common.AverageFloat(z))
 }
-

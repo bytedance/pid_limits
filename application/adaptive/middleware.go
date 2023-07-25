@@ -13,17 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package  adaptive
+package adaptive
 
 import (
 	"fmt"
-	"github.com/bytedance/plato/application/adaptive/config"
-	"github.com/bytedance/plato/application/adaptive/limiting"
-	"github.com/bytedance/plato/arithmetic/pid"
-	"github.com/bytedance/plato/core/system"
-	"github.com/gin-gonic/gin"
 	"math/rand"
 	"time"
+
+	"github.com/bytedance/pid_limits/application/adaptive/config"
+	"github.com/bytedance/pid_limits/application/adaptive/limiting"
+	"github.com/bytedance/pid_limits/arithmetic/pid"
+	"github.com/bytedance/pid_limits/core/system"
+	"github.com/gin-gonic/gin"
 )
 
 type tunePID struct {

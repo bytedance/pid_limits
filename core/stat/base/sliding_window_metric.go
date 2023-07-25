@@ -13,13 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package  base
+package base
 
 import (
 	"log"
 
-	"github.com/bytedance/plato/core/base"
-	"github.com/bytedance/plato/util"
+	"github.com/bytedance/pid_limits/core/base"
+	"github.com/bytedance/pid_limits/util"
 )
 
 // SlidingWindowMetric represents the sliding window metric wrapper.

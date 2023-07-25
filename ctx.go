@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package  plato
+package plato
 
-import "github.com/bytedance/plato/util"
+import "github.com/bytedance/pid_limits/util"
 
 type EntryCtx struct {
 	startTime uint64

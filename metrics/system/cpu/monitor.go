@@ -13,12 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package  cpu
+package cpu
 
 import (
 	"log"
 
-	"github.com/bytedance/plato/core/system"
+	"github.com/bytedance/pid_limits/core/system"
 )
 
 const (

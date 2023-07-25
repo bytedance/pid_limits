@@ -13,10 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package   config
+package config
 
 import (
-	"github.com/bytedance/plato/metrics/system/cpu"
+	"github.com/bytedance/pid_limits/metrics/system/cpu"
 )
 
 type Options struct {

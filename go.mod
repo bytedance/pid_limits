@@ -1,4 +1,4 @@
-module github.com/bytedance/plato
+module github.com/bytedance/pid_limits
 
 go 1.17
 

@@ -13,10 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package  limiting
+package limiting
 
 import (
-	"github.com/bytedance/plato/arithmetic/pid"
+	"github.com/bytedance/pid_limits/arithmetic/pid"
 )
 
 func NewPidTunerLimiting(setPoint float64) *PIDTune {

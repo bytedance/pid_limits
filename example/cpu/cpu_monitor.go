@@ -13,13 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package  cpu
+package cpu
 
 import (
 	"log"
 	"time"
 
-	"github.com/bytedance/plato/metrics/system/cpu"
+	"github.com/bytedance/pid_limits/metrics/system/cpu"
 )
 
 // monitor should be global variable

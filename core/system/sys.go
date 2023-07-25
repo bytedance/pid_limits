@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package  system
+package system
 
 import (
 	"errors"
@@ -23,9 +23,9 @@ import (
 	"sync/atomic"
 	"time"
 
-	metrics "github.com/bytedance/plato/core/base"
-	"github.com/bytedance/plato/core/stat/base"
-	"github.com/bytedance/plato/util"
+	metrics "github.com/bytedance/pid_limits/core/base"
+	"github.com/bytedance/pid_limits/core/stat/base"
+	"github.com/bytedance/pid_limits/util"
 	"golang.org/x/sys/unix"
 )
 

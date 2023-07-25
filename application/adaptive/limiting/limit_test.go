@@ -13,10 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package  limiting
+package limiting
 
 import (
-	"github.com/bytedance/plato/application/adaptive/config"
+	"github.com/bytedance/pid_limits/application/adaptive/config"
 	"github.com/go-playground/assert/v2"
 	"testing"
 	"time"

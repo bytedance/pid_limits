@@ -13,13 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package  pid
+package pid
 
 import (
 	"log"
 	"math"
 
-	"github.com/bytedance/plato/util"
+	"github.com/bytedance/pid_limits/util"
 )
 
 const (

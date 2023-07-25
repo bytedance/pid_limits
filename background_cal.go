@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package  plato
+package plato
 
 import (
 	"errors"
@@ -21,8 +21,8 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/bytedance/plato/util"
-	"github.com/bytedance/plato/util/executors"
+	"github.com/bytedance/pid_limits/util"
+	"github.com/bytedance/pid_limits/util/executors"
 )
 
 type metricsConainer interface {

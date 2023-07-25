@@ -13,13 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package  flow
+package flow
 
 import (
 	"github.com/agiledragon/gomonkey"
-	"github.com/bytedance/plato/core/base"
-	stat "github.com/bytedance/plato/core/stat/base"
-	"github.com/bytedance/plato/util"
+	"github.com/bytedance/pid_limits/core/base"
+	stat "github.com/bytedance/pid_limits/core/stat/base"
+	"github.com/bytedance/pid_limits/util"
 	"math"
 	"sync/atomic"
 	"testing"
@@ -237,4 +237,3 @@ func TestDoCheck2V3(t *testing.T) {
 		})
 	}
 }
-

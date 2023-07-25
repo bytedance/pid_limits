@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package  limiting
+package limiting
 
 import (
 	"log"
@@ -21,9 +21,9 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/bytedance/plato/arithmetic/pid"
-	"github.com/bytedance/plato/metrics/system/cpu"
-	"github.com/bytedance/plato/util"
+	"github.com/bytedance/pid_limits/arithmetic/pid"
+	"github.com/bytedance/pid_limits/metrics/system/cpu"
+	"github.com/bytedance/pid_limits/util"
 )
 
 type PIDLimiting struct {
@@ -62,7 +62,7 @@ func (l *PIDLimiting) start() {
 			log.Printf(
 				"cpu usage is: %f, threshould is: %f, reject rate is %f, overloaded: %v",
 				cpuUsage, l.pid.GetThreshold(), -rate, l.monitor.IsOverload(),
-				)
+			)
 		}
 	}, 100*time.Millisecond)
 }

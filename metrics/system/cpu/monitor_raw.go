@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package  cpu
+package cpu
 
 import (
 	"log"
@@ -21,7 +21,7 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/bytedance/plato/util"
+	"github.com/bytedance/pid_limits/util"
 )
 
 const (

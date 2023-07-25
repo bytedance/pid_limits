@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package  cpu
+package cpu
 
 import (
 	"log"
@@ -21,10 +21,10 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/bytedance/plato/arithmetic/common"
-	"github.com/bytedance/plato/arithmetic/zscore"
-	"github.com/bytedance/plato/core/system"
-	"github.com/bytedance/plato/util"
+	"github.com/bytedance/pid_limits/arithmetic/common"
+	"github.com/bytedance/pid_limits/arithmetic/zscore"
+	"github.com/bytedance/pid_limits/core/system"
+	"github.com/bytedance/pid_limits/util"
 )
 
 /**

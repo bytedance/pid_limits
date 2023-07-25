@@ -19,7 +19,7 @@
 # 使用方式
 ## Gin 服务直接接入
 ```
-import "github.com/bytedance/plato/application/adaptive"
+import "github.com/bytedance/pid_limits/application/adaptive"
 
 func main(){
     ...
@@ -46,7 +46,7 @@ r.Use(func(c context.Context, ctx *app.RequestContext) {
 ## 自定义pid 参数
 使用者可以根据需要，自定义参数。
 ```
-import "github.com/bytedance/plato/application/adaptive"
+import "github.com/bytedance/pid_limits/application/adaptive"
 
 func main(){
     ...
@@ -59,8 +59,8 @@ func main(){
 在业务运行过程中，需要动态调整限流阈值，例如，通过动态下发配置，完成限流阈值的调节
 ```
 import (
-    "github.com/bytedance/plato/application/adaptive"
-    "github.com/bytedance/plato/application/adaptive/config"
+    "github.com/bytedance/pid_limits/application/adaptive"
+    "github.com/bytedance/pid_limits/application/adaptive/config"
 )
 func main(){
     ...
@@ -82,8 +82,8 @@ func main(){
 
 ```
 import (
-    "github.com/bytedance/plato/application/adaptive"
-    "github.com/bytedance/plato/application/adaptive/config"
+    "github.com/bytedance/pid_limits/application/adaptive"
+    "github.com/bytedance/pid_limits/application/adaptive/config"
 )
 func main(){
     ...
