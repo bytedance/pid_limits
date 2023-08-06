@@ -17,9 +17,10 @@ package plato
 
 import (
 	"errors"
+	"time"
 
 	"github.com/bytedance/pid_limits/core/base"
-	stat "github.com/bytedance/pid_limits/core/stat/base"
+	"github.com/bytedance/pid_limits/core/stat"
 	"github.com/bytedance/pid_limits/util"
 )
 
@@ -31,12 +32,12 @@ var (
 //Metrics of this *PlatoEntry will not be calculated until they are passed to plato.Init() method
 func NewPlatoEntry(name string, calculateMetrics ...MetricFactory) *PlatoEntry {
 	pe := &PlatoEntry{
-		Name:    name,
-		Metrics: map[MetricFactory]*Metric{},
-		rts: &stat.SlidingWindowMetric{
-			LastPassedTime: 0,
-			Real:           stat.NewBucketLeapArray(base.DefaultSampleCount, base.DefaultIntervalMs),
-		},
+		Rule:       nil,
+		Name:       name,
+		rtt:        stat.NewSlidingWindow(-1, time.Millisecond*time.Duration(base.DefaultIntervalMs)),
+		completion: stat.NewSlidingWindow(-1, time.Millisecond*time.Duration(base.DefaultIntervalMs)),
+		blocked:    stat.NewSlidingWindow(-1, time.Millisecond*time.Duration(base.DefaultIntervalMs)),
+		error:      stat.NewSlidingWindow(-1, time.Millisecond*time.Duration(base.DefaultIntervalMs)),
 	}
 
 	for _, m := range calculateMetrics {
@@ -65,10 +66,13 @@ func DefaultEntryCalculated(name string) *PlatoEntry {
 }
 
 type PlatoEntry struct {
-	Rule    RuleInterface
-	Name    string
-	Metrics map[MetricFactory]*Metric //todo : maybe we can use uintptr as key here
-	rts     *stat.SlidingWindowMetric
+	Rule       RuleInterface
+	Name       string
+	Metrics    map[MetricFactory]*Metric //todo : maybe we can use uintptr as key here
+	rtt        *stat.SlidingWindow
+	completion *stat.SlidingWindow
+	blocked    *stat.SlidingWindow
+	error      *stat.SlidingWindow
 }
 
 //A helper function to use entry, avoid typo error.
@@ -89,11 +93,8 @@ func (pe *PlatoEntry) Run(r func() error) (error, bool) {
 
 func (pe *PlatoEntry) Exit(ctx *EntryCtx) {
 	rt := util.CurrentTimeMillis() - ctx.startTime
-	pe.rts.Real.AddCount(base.MetricEventRt, int64(rt))
-	pe.rts.Real.AddCount(base.MetricEventComplete, 1)
-
-	//logs.Debug("[PlatoEntry.%s.Exit]qps %v", pe.Name, Chain(pe, Qps))
-	//logs.Debug("[PlatoEntry.%s.Exit]pct  %v  avg %v  rate  %v", pe.Name, Chain(pe, PctRT), Chain(pe, AvgRT), Chain(pe, ErrRate))
+	pe.rtt.Add(int(rt))
+	pe.completion.Add(1)
 }
 
 func (pe *PlatoEntry) Entry() (*EntryCtx, bool) {
@@ -103,7 +104,7 @@ func (pe *PlatoEntry) Entry() (*EntryCtx, bool) {
 	if pe.Rule == nil {
 		return ctx, true
 	} else if flag := pe.Rule.Decide(ctx); !flag {
-		pe.rts.Real.AddCount(base.MetricEventBlock, 1)
+		pe.blocked.Add(1)
 		return ctx, false
 	} else {
 		return ctx, true
@@ -111,7 +112,7 @@ func (pe *PlatoEntry) Entry() (*EntryCtx, bool) {
 }
 
 func (pe *PlatoEntry) ReportError(err error) {
-	pe.rts.Real.AddCount(base.MetricEventError, 1)
+	pe.error.Add(1)
 }
 
 func (pe *PlatoEntry) AddMetric(factory MetricFactory) {

@@ -18,7 +18,6 @@ package plato
 import (
 	"sort"
 
-	"github.com/bytedance/pid_limits/core/base"
 	"github.com/bytedance/pid_limits/util"
 )
 
@@ -26,9 +25,8 @@ var (
 	ErrRate = CreateMetricFactory(func(entry *PlatoEntry) *Metric {
 		return &Metric{
 			cul: func() float64 {
-				curMillis := util.CurrentTimeMillis()
-				err := float64(entry.rts.GetSumWithTime(curMillis, base.MetricEventError))
-				total := float64((entry.rts.GetSumWithTime(curMillis, base.MetricEventComplete)) + (entry.rts.GetSumWithTime(curMillis, base.MetricEventBlock)))
+				err := float64(entry.error.GetSum())
+				total := float64(entry.completion.GetSum() + entry.blocked.GetSum())
 				if total == 0 {
 					return 0
 				} else {
@@ -41,11 +39,7 @@ var (
 	Qps = CreateMetricFactory(func(entry *PlatoEntry) *Metric {
 		return &Metric{
 			cul: func() float64 {
-				intervalMs := entry.rts.Real.IntervalInMs()
-				sampleCount := entry.rts.Real.SampleCount()
-				now := util.CurrentTimeMillis()
-				end := now - uint64(intervalMs/sampleCount)
-				return entry.rts.GetAvgWithTime(base.MetricEventComplete, end-1000, end)
+				return entry.completion.GetIncreaseRatio()
 			},
 		}
 	})
@@ -53,7 +47,7 @@ var (
 	PctRT = CreateMetricFactory(func(entry *PlatoEntry) *Metric {
 		return &Metric{
 			cul: func() float64 {
-				a := entry.rts.GetPctWithTime(util.CurrentTimeMillis(), base.MetricEventRt)
+				a := entry.rtt.GetData()
 				sort.Ints(a)
 				if len(a) == 0 {
 					return 0
@@ -66,11 +60,11 @@ var (
 	AvgRT = CreateMetricFactory(func(entry *PlatoEntry) *Metric {
 		return &Metric{
 			cul: func() float64 {
-				complete := float64(entry.rts.GetSum(base.MetricEventComplete))
+				complete := float64(entry.completion.GetSum())
 				if complete == 0 {
 					return 0
 				} else {
-					return float64(entry.rts.GetSum(base.MetricEventRt)) / complete
+					return float64(entry.rtt.GetSum()) / complete
 				}
 			},
 		}
