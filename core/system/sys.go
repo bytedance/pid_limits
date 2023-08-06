@@ -23,9 +23,7 @@ import (
 	"sync/atomic"
 	"time"
 
-	metrics "github.com/bytedance/pid_limits/core/base"
-	"github.com/bytedance/pid_limits/core/stat/base"
-	"github.com/bytedance/pid_limits/util"
+	"github.com/bytedance/pid_limits/core/stat"
 	"golang.org/x/sys/unix"
 )
 
@@ -36,13 +34,10 @@ const (
 )
 
 var (
-	currentCPUUsage atomic.Value
-	initOnce        sync.Once
-	ssStopChan      = make(chan struct{})
-	slidingWindow   = &base.SlidingWindowMetric{
-		Real:           base.NewBucketLeapArray(60, 6000),
-		LastPassedTime: 0,
-	}
+	currentCPUUsage    atomic.Value
+	initOnce           sync.Once
+	ssStopChan         = make(chan struct{})
+	slidingWindow      = stat.NewSlidingWindow(100, 6*time.Second)
 	getCPURate         = getCPURateByStat
 	retrieveValueError = errors.New("can not retrieveValue from ")
 	errPrevStatsNil    = errors.New("PREV STAT IS NIL")
@@ -110,7 +105,7 @@ func retrieveAndUpdateCPUUsage() {
 		return
 	}
 	currentCPUUsage.Store(cpuRate)
-	slidingWindow.Real.AddCount(metrics.MetricEventCpuRate, int64(cpuRate*scale))
+	slidingWindow.Add(int(cpuRate * scale))
 }
 
 func CurrentCPUUsage() float64 {
@@ -126,7 +121,7 @@ func CurrentCPUUsage() float64 {
 
 // checkout the cpu slice in order of time
 func ExtractCPUWindows() (cpuRates []float64) {
-	record := slidingWindow.GetValuesWithTime(util.CurrentTimeMillis(), metrics.MetricEventCpuRate)
+	record := slidingWindow.GetData()
 	for _, rate := range record {
 		if rate == 0 {
 			continue
