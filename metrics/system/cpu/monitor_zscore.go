@@ -90,7 +90,8 @@ func (monitor *MonitorZScore) decide() {
 		return
 	}
 	avgCPU := common.AverageFloat(windows)
-	log.Printf("pid_debug: avgCPU = %+v\n", avgCPU)
+	log.Printf("pid_debug: avgCPU = %+v, monitor.IsOverlod() = %+v\n", avgCPU, monitor.IsOverload())
+	log.Printf("pid_debug: upperThreshold = %+v, lowerThreshold = %+v\n", monitor.upperThreshold(), monitor.lowerThreshold())
 	if monitor.IsOverload() {
 		monitor.decideLessLoad(avgCPU, rateWindows, windows)
 	} else {
