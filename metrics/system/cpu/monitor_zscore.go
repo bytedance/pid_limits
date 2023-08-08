@@ -101,6 +101,9 @@ func (monitor *MonitorZScore) decide() {
 
 func (monitor *MonitorZScore) decideOverLoad(avgCPU float64, rateWindows, windows []float64) {
 	// 在没有过载的时候，需要连续30个计算周期【3秒】中，每次CPU平均值高于阈值上限
+	log.Printf("pid_debug: avgCPU >= monitor.upperThreshold() = %+v\n", avgCPU >= monitor.upperThreshold())
+	log.Printf("avgCPU < monitor.lowerThreshold() = %+v\n", avgCPU < monitor.lowerThreshold())
+	log.Printf("pid_debug: monitor.continuousTime = %+v\n", monitor.continuousTime)
 	if avgCPU >= monitor.upperThreshold() && atomic.AddUint32(&monitor.continuousTime, 1) > continuousTimes {
 		log.Printf("warning: [adaptive limiting] start, rateWindows=%v windows=%v", rateWindows, windows)
 		monitor.overload.Store(true)
