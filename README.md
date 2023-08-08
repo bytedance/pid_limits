@@ -28,7 +28,10 @@ func main(){
 }
 ```
 ## 原生 limiter 接入
+
 ```
+import "github.com/bytedance/pid_limits/application/adaptive/limiting"
+
 r :=  new_route_function() // 通过其他框架初始化得到的 route 实例
 
 limit := limiting.NewPidLimitingHttpDefault(0.8)
