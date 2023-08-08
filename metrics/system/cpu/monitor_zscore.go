@@ -85,10 +85,12 @@ func (monitor *MonitorZScore) decide() {
 	}
 	rateWindows := system.ExtractCPUWindows()
 	windows := zscore.ZScore(rateWindows, monitor.score)
+	log.Printf("pid_debug: rateWindows = %+v\n", rateWindows)
 	if len(windows) == 0 {
 		return
 	}
 	avgCPU := common.AverageFloat(windows)
+	log.Printf("pid_debug: avgCPU = %+v\n", avgCPU)
 	if monitor.IsOverload() {
 		monitor.decideLessLoad(avgCPU, rateWindows, windows)
 	} else {
