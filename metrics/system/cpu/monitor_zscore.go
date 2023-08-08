@@ -104,11 +104,13 @@ func (monitor *MonitorZScore) decideOverLoad(avgCPU float64, rateWindows, window
 	log.Printf("pid_debug: avgCPU >= monitor.upperThreshold() = %+v\n", avgCPU >= monitor.upperThreshold())
 	log.Printf("avgCPU < monitor.lowerThreshold() = %+v\n", avgCPU < monitor.lowerThreshold())
 	log.Printf("pid_debug: monitor.continuousTime = %+v\n", monitor.continuousTime)
-	if avgCPU >= monitor.upperThreshold() && atomic.AddUint32(&monitor.continuousTime, 1) > continuousTimes {
+	// 如果 cpu 负载过高，可能导致协程无法100 ms 转一次，后续若干秒转一次
+	if avgCPU >= monitor.upperThreshold() && (atomic.AddUint32(&monitor.continuousTime, 1) > continuousTimes || avgCPU >= 0.99) {
 		log.Printf("warning: [adaptive limiting] start, rateWindows=%v windows=%v", rateWindows, windows)
 		monitor.overload.Store(true)
 		atomic.StoreUint32(&monitor.continuousTime, 0)
 	}
+
 	if avgCPU < monitor.lowerThreshold() {
 		atomic.StoreUint32(&monitor.continuousTime, 0)
 	}
